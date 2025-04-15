@@ -76,4 +76,4 @@ Run $ oc apply -f ingress-policy.yaml
 Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
 Insure that you apdate the url to reflect your enviroment.
  
-![](images/vpa-image.png)
+![](images/rest-fightsAPI.png)
