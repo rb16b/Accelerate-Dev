@@ -33,6 +33,8 @@ oc apply -f vpa.yaml
 Next using rest-heroes Route url open it in the browser like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/
 Make Sure to add q/swagger-ui/ at the end.
 
+![](images/rest-fightsAPI.png)
+
 Run some of the APIs mutiple times. You can use run-load.sh, but first change the URL of your cluster generated URL for this API
 
 After run $oc describe vpa rest-fights-vpa
@@ -63,7 +65,8 @@ Run $ oc apply -f hpa.yaml
 
 
 # Network Policy 
- Apply Ingress Policy to rest-figts Pod,
+ Apply Ingress Policy to rest-figts Pod.
+ 
  Run $ oc apply -f ingress-policy.yaml
 
  Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
