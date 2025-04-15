@@ -65,10 +65,15 @@ Run $ oc apply -f hpa.yaml
 
 
 # Network Policy 
- Apply Ingress Policy to rest-figts Pod.
- 
- Run $ oc apply -f ingress-policy.yaml
 
- Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
- Insure that you apdate the url to reflect your enviroment.
+
+In OpenShift, Network Policies are used to control ingress (incoming) and egress (outgoing) traffic to and from pods. You can create Network Policies to define rules that specify which pods, namespaces, or IP blocks are allowed to connect to your application's pods
+
+Apply Ingress Policy to rest-figts Pod.
  
+Run $ oc apply -f ingress-policy.yaml
+
+Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
+Insure that you apdate the url to reflect your enviroment.
+ 
+![](images/rest-fightsAPI.pn
