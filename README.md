@@ -23,6 +23,9 @@ Vertical Auto Scaller requires VPA opertor to be installed, which was done for t
 
 ## Getting Started with the vpa exercise
 
+Clone this repo
+
+
 oc login to cluster with user id assigned to you
 Use dev-userX project for this exercise
 oc project dev-userX ( dev-user1 for user1 )
@@ -31,19 +34,39 @@ oc apply -f vpa.yaml
 Next using rest-heroes Route url open it in the browser like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/
 Make Sure to add q/swagger-ui/ at the end.
 
-Run some of the APIs mutiple times.
+Run some of the APIs mutiple times. You can use run-load.sh, but first change the URL of your cluster generated URL for this API
 
 After run $oc describe vpa rest-fights-vpa
 
-Look for the recomdenation values for CPU and Memory
+Look for the recomdenation values for CPU and Memory as shown in the below image
 
 
 ![](images/vpa-image.png)
 
 
 
-## Components and Architecture
+## Pod Budget Distribution Excercisce
 
-The Vertical Pod Autoscaler consists of three parts. The recommender, updater and admission-controller. Read more about them on the [components](./docs/components.md) page.
+A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrade)
 
-## Features and Known limitations
+Make sure you are dev-UserX project
+Run $ oc apply -f pdb.yaml
+
+You have set up Pod Distriubrtion Budget for rest-Fights application 
+
+## Horizontal Pod Scaler Exercise
+
+The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
+
+Apply HPA to dev-userX project to manage rest-fights pod scalabilty
+
+Run $ oc apply -f hpa.yaml 
+
+
+# Network Policy 
+ Apply Ingress Policy to rest-figts Pod,
+ Run $ oc apply -f ingress-policy.yaml
+
+ Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
+ Insure that you apdate the url to reflect your enviroment.
+ 
