@@ -11,29 +11,31 @@
 
 ## Intro
 
-Vertical Pod Autoscaler (VPA) frees users from the necessity of setting
-up-to-date resource requests for the containers in their pods. When
-configured, it will set the requests automatically based on usage and thus
-allow proper scheduling onto nodes so that appropriate resource amount is
-available for each pod. It will also maintain ratios between requests and
-limits that were specified in initial containers configuration.
+This is an addition to Accelerate Application Delivery Workshop.
+Users will have a chance to try: 
+     Vertical Auto Scaller for assessing Deplyment resurces levels
+     Horizontal Auto Scaller 
+     Pod Distributon Budget
+     Netwrok Policy
 
-It can both down-scale pods that are over-requesting resources, and also
-up-scale pods that are under-requesting resources based on their usage over
-time.
+Vertical Auto Scaller requires VPA opertor to be installed, which was done for this cluster.
 
-Autoscaling is configured with a
-[Custom Resource Definition object](https://kubernetes.io/docs/concepts/api-extension/custom-resources/)
-called [VerticalPodAutoscaler](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go).
-It allows to specify which pods should be vertically autoscaled as well as if/how the
-resource recommendations are applied.
 
-To enable vertical pod autoscaling on your cluster please follow the installation
-procedure described below.
+## Getting Started with the vpa exercise
 
-## Getting Started
+oc login to cluster with user id assigned to you
+Use dev-userX project for this exercise
+oc project dev-userX ( dev-user1 for user1 )
+oc apply -f vpa.yaml 
 
-See [Installation](./docs/installation.md) for a guide on installation, followed by a the [Quick start](./docs/quickstart.md) guide.
+Next using rest-heroes Route url open it in the browser like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/
+Make Sure to add q/swagger-ui/ at the end.
+
+Run some of the APIs mutiple times.
+
+After run $oc describe vpa rest-fights-vpa
+
+Look for the recomdation value for CPU and Memory
 
 Also refer to the [FAQ](./docs/faq.md) for more.
 
