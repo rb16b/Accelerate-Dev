@@ -12,10 +12,10 @@
 
 This is an addition to Accelerate Application Delivery Workshop.
 Users will have a chance to try: 
-     Vertical Auto Scaller for assessing Deplyment resurces levels
+     Vertical Auto Scaller for assessing Deplyment resources levels
      Horizontal Auto Scaller 
      Pod Distributon Budget
-     Netwrok Policy
+     Netwrok Policy to restric access
 
 Vertical Auto Scaller requires VPA opertor to be installed, which was done for this cluster.
 
@@ -27,8 +27,11 @@ Clone this repo
 
 oc login to cluster with user id assigned to you
 Use dev-userX project for this exercise
+
 oc project dev-userX ( dev-user1 for user1 )
-oc apply -f vpa.yaml 
+View vpa.yaml file first, then apply it to the project.
+
+$ oc apply -f vpa.yaml 
 
 Next using rest-heroes Route url open it in the browser like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/
 Make Sure to add q/swagger-ui/ at the end.
@@ -39,7 +42,7 @@ Run some of the APIs mutiple times. You can use run-load.sh, but first change th
 
 After run $oc describe vpa rest-fights-vpa
 
-Look for the recomdenation values for CPU and Memory as shown in the below image
+Look for the recomdenation values captured by vpa for CPU and Memory as shown in the below image
 
 
 ![](images/vpa-image.png)
@@ -51,9 +54,11 @@ Look for the recomdenation values for CPU and Memory as shown in the below image
 A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrade)
 
 Make sure you are dev-UserX project
+View pdb.yaml file
+
 Run $ oc apply -f pdb.yaml
 
-You have set up Pod Distriubrtion Budget for rest-Fights application 
+You have set up Pod Distriubrtion Budget for rest-fights application 
 
 ## Horizontal Pod Scaler Exercise
 
@@ -68,6 +73,8 @@ Run $ oc apply -f hpa.yaml
 
 
 In OpenShift, Network Policies are used to control ingress (incoming) and egress (outgoing) traffic to and from pods. You can create Network Policies to define rules that specify which pods, namespaces, or IP blocks are allowed to connect to your application's pods
+
+View ingress-policy.yaml
 
 Apply Ingress Policy to rest-figts Pod.
  
