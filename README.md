@@ -12,15 +12,15 @@
 
 This is an addition to Accelerate Application Delivery Workshop.
 Users will have a chance to try: 
-     Vertical Auto Scaller for assessing Deplyment resources levels
-     Horizontal Auto Scaller 
-     Pod Distributon Budget
-     Netwrok Policy to restric access
+    - Vertical Pod AutoScaler for assessing Deplyment resources levels
+    - Horizontal Pod AutoScaler 
+    - Pod Distributon Budget
+    - Netwrok Policy to restrict access
 
-Vertical Auto Scaller requires VPA opertor to be installed, which was done for this cluster.
+Vertical Auto Scaler requires VPA opertor to be installed, which was done for this cluster.
 
 
-## Getting Started with the vpa exercise
+## Getting Started with the Vertical Pod AutoScaler exercise
 
 Clone this repo
 
