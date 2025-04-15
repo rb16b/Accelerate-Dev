@@ -17,7 +17,7 @@ Users will have a chance to try:
     - Pod Distributon Budget
     - Netwrok Policy to restrict access
 
-Vertical Auto Scaler requires VPA opertor to be installed, which was done for this cluster.
+NOTE: Vertical Auto Scaler requires VPA opertor to be installed, which was done for this cluster.
 
 
 ## Getting Started with the Vertical Pod AutoScaler exercise
@@ -49,7 +49,7 @@ Look for the recomdenation values captured by vpa for CPU and Memory as shown in
 
 
 
-## Pod Budget Distribution Excercisce
+## Pod Budget Distribution Exercise
 
 A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrade)
 
@@ -69,7 +69,7 @@ Apply HPA to dev-userX project to manage rest-fights pod scalabilty
 Run $ oc apply -f hpa.yaml 
 
 
-# Network Policy 
+# Network Policy Exercise
 
 
 In OpenShift, Network Policies are used to control ingress (incoming) and egress (outgoing) traffic to and from pods. You can create Network Policies to define rules that specify which pods, namespaces, or IP blocks are allowed to connect to your application's pods
