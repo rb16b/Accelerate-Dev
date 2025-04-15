@@ -35,9 +35,12 @@ Run some of the APIs mutiple times.
 
 After run $oc describe vpa rest-fights-vpa
 
-Look for the recomdation value for CPU and Memory
+Look for the recomdenation values for CPU and Memory
 
-Also refer to the [FAQ](./docs/faq.md) for more.
+
+![](images/vpa-image.png)
+
+
 
 ## Components and Architecture
 
