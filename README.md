@@ -2,12 +2,11 @@
 
 ## Contents
 
-- [Contents](#contents)
 - [Intro](#intro)
 - [Getting started](#getting-started)
-- [Components and Architecture](#components-and-architecture)
-- [Features and Known limitations](#features-and-known-limitations)
-- [Related links](#related-links)
+- [Pod Budget Distribution Excercisce](#components-and-architecture)
+- [Horizontal Pod Scaler Exercise](#features-and-known-limitations)
+- [Network Policy](#related-links)
 
 ## Intro
 
