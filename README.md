@@ -22,13 +22,35 @@ NOTE: Vertical Auto Scaler requires VPA opertor to be installed, which was done 
 
 ## Getting Started with the Vertical Pod AutoScaler exercise
 
-Clone this repo
+Clone this repo: https://github.com/rb16b/Accelerate-Dev
 
+1. You can clone it onto your laptop - howver there may be proxy issues runing oc cmds with the cluster on cloud
+2. Clone it into Dev-Spaces instance provided with the workshop
 
+Select    
+![](images/clone-repor.png)
+
+Enter Repo url 
+![](images/repo=url.png)
+
+Enter project home: /home/user/
+
+press OK button
+
+Press Add to the workspace
+
+Press Trust Provider
+
+You can use exitsing terminal or open a new one 
+
+Make sure you are logged to the cluster 
 oc login to cluster with user id assigned to you
-Use dev-userX project for this exercise
 
+Use dev-userX project for this exercise
 oc project dev-userX ( dev-user1 for user1 )
+
+$ cd /home/user/Accelerate-Dev/dev-user-objects
+
 View vpa.yaml file first, then apply it to the project.
 
 $ oc apply -f vpa.yaml 
@@ -38,7 +60,9 @@ Make Sure to add q/swagger-ui/ at the end.
 
 ![](images/rest-fightsAPI.png)
 
-Run some of the APIs mutiple times. You can use run-load.sh, but first change the URL of your cluster generated URL for this API
+Run mutiple calls to create load. 
+You can use run-load.sh, but first change the URL with a generated URL for this API
+"http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
 
 After run $oc describe vpa rest-fights-vpa
 
