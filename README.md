@@ -27,13 +27,16 @@ Clone this repo: https://github.com/rb16b/Accelerate-Dev
 1. You can clone it onto your laptop - howver there may be proxy issues runing oc cmds with the cluster on cloud
 2. Clone it into Dev-Spaces instance provided with the workshop
 
-Select    
+From them meanu select -> Source Control button
+
 ![](images/clone-repor.png)
 
-Enter Repo url 
+Enter Repo url:
+
 ![](images/repo-url-enter.png)
 
 Enter project home: /home/user/
+
 ![](images/project-home-for-extra.png)
 
 press OK button
@@ -43,15 +46,16 @@ Press Add to the workspace
 Press Trust Provider
 
 Repo Added
+
 ![](images/rep-ready.png)
 
 You can use exitsing terminal or open a new one 
 
 Make sure you are logged to the cluster 
-oc login to cluster with user id assigned to you
+$oc login to cluster with user id assigned to you
 
 Use dev-userX project for this exercise
-oc project dev-userX ( dev-user1 for user1 )
+$oc project dev-userX ( dev-user1 for user1 )
 
 $ cd /home/user/Accelerate-Dev/dev-user-objects
 
