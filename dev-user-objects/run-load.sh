@@ -1,7 +1,7 @@
 
 while [[ true ]]; do
    curl -X 'GET' \
-  'http://RELPLACEMEm/api/fights/hello' \
+  'http://RELPLACEME/api/fights/hello' \
   -H 'accept: text/plain'
 
 done
