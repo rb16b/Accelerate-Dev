@@ -31,15 +31,19 @@ Select
 ![](images/clone-repor.png)
 
 Enter Repo url 
-![](images/repo=url.png)
+![](images/repo-url-enter.png)
 
 Enter project home: /home/user/
+![](images/project-home-for-extra.png)
 
 press OK button
 
 Press Add to the workspace
 
 Press Trust Provider
+
+Repo Added
+![](images/rep-ready.png)
 
 You can use exitsing terminal or open a new one 
 
