@@ -152,7 +152,7 @@ Run $ oc apply -f ingress-policy.yaml
 Run API call from http://YOUR_URL/q/swagger-ui/ and check the return values
 Insure that you apdate the url to reflect your enviroment.
  
-![](images/rest-fightsAPI.png)
+![](images/netpolicy-error.png)
 
 You should see an error : 503 , Service Unavailable 
 
