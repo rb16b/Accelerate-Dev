@@ -96,6 +96,7 @@ Check if pdb is ready
 $ oc get pdb
 
 You should see the bellow output -->
+
 NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 fights-pdb   1               N/A               0                     12m
 
