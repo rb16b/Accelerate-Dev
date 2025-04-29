@@ -114,10 +114,29 @@ The only way to test it out would be use of a node drain command. But for that a
 
 The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
 
-Apply HPA to dev-userX project to manage rest-fights pod scalabilty
+Apply HPA to dev-userX (where userX is your workshop userID !!! )project to manage rest-fights pod scalabilty
+
+First look at Developer Console Topology project dev-userX 
+
+Click on rest-figts pod and Details 
+
+![](images/hpa-org.png)
+
+You see a pod count to be 1 and arrows for manual pod scalabilty.
+
+HPA definitions for Min pod count is 2, Max pod count 4.
 
 Run $ oc apply -f hpa.yaml 
 
+Take a look back a the same console
+
+![](images/hpa-1-2.png)
+
+You should notice changes happing, pod is scaling up
+
+Then finaly rest-figts is runing 2 pods and manual scalabity arrows are gone
+
+![](images/hpa-2.png)
 
 # Network Policy Exercise
 
