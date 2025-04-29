@@ -71,8 +71,10 @@ Make Sure to add q/swagger-ui/ at the end.
 Run mutiple calls to create load. 
 You can use run-load.sh, but first change the URL with a generated URL for this API
 "http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
+Run $ ./run-load.sh 
+Use cntrl-c to stop it
 
-After run $oc describe vpa rest-fights-vpa
+After $oc describe vpa rest-fights-vpa
 
 Look for the recomdenation values captured by vpa for CPU and Memory as shown in the below image
 
@@ -99,7 +101,7 @@ You should see the bellow output -->
 
 NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 
-fights-pdb   1               N/A               0                     12m
+fights-pdb   1                  N/A               0                  12m
 
 
 NOTE: oc delete pod and pdb 
