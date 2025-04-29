@@ -154,7 +154,7 @@ Insure that you apdate the url to reflect your enviroment.
  
 ![](images/rest-fightsAPI.png)
 
-You see an error : 503 , Service Unavailable 
+You should see an error : 503 , Service Unavailable 
 
 Delete netowrk policy:
 
