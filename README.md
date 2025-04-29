@@ -92,6 +92,19 @@ Run $ oc apply -f pdb.yaml
 
 You have set up Pod Distriubrtion Budget for rest-fights application 
 
+Check if pdb is ready
+$ oc get pdb
+
+You should see the bellow output -->
+NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+fights-pdb   1               N/A               0                     12m
+
+NOTE: oc delete pod and pdb 
+PDB does not consider explicitly deleting a deployment as a voluntary disruptions. !!!
+The only way to test it out would be use of node drain command. But for that an admin role is needed.
+
+
+
 ## Horizontal Pod Scaler Exercise
 
 The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
