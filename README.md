@@ -149,7 +149,20 @@ Apply Ingress Policy to rest-figts Pod.
  
 Run $ oc apply -f ingress-policy.yaml
 
-Run API call from http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/ and check the return values
+Run API call from http://YOUR_URL/q/swagger-ui/ and check the return values
 Insure that you apdate the url to reflect your enviroment.
  
 ![](images/rest-fightsAPI.png)
+
+You see an error : 503 , Service Unavailable 
+
+Delete netowrk policy:
+
+$ oc get networkpolcy
+
+Response: block-ingress   app=rest-fights   44m
+
+$ oc delete networkpolicy block-ingress 
+
+ you can try open app url form openshift console and ingress trafic should access the rest-fights app 
+
