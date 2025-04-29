@@ -101,9 +101,10 @@ NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 
 fights-pdb   1               N/A               0                     12m
 
+
 NOTE: oc delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruptions. !!!
-The only way to test it out would be use of node drain command. But for that an admin role is needed.
+The only way to test it out would be use of a node drain command. But for that an admin role is needed.
 
 
 
