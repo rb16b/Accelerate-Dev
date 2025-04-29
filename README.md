@@ -17,8 +17,9 @@ Users will have a chance to try:
     - Pod Distributon Budget
     - Netwrok Policy to restrict access
 
-NOTE: Vertical Auto Scaler requires VPA opertor to be installed, which was done for this cluster.
+NOTE: Vertical Auto Scaler requires VPA opertor to be installed, which was done bu the cluster admin.
 
+You will be using openshift project created during first lab called dev-userX, where X is a number assigned ( example: dev-user3 ) 
 
 ## Getting Started with the Vertical Pod AutoScaler exercise
 
@@ -59,7 +60,7 @@ $oc project dev-userX ( dev-user1 for user1 )
 
 $ cd /home/user/Accelerate-Dev/dev-user-objects
 
-View vpa.yaml file first, then apply it to the project.
+View vpa.yaml file first, then apply it to the rest-figthts pod.
 
 $ oc apply -f vpa.yaml 
 
@@ -69,14 +70,21 @@ Make Sure to add q/swagger-ui/ at the end.
 ![](images/rest-fightsAPI.png)
 
 Run mutiple calls to create load. 
-You can use run-load.sh, but first change the URL with a generated URL for this API
+
+To craate more traffic:
+
+Use the script  run-load.sh, but first change the URL with a generated URL for this API
 "http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
+
 Run $ ./run-load.sh 
 Use cntrl-c to stop it
 
-After $oc describe vpa rest-fights-vpa
+After the script is done :
 
-Look for the recomdenation values captured by vpa for CPU and Memory as shown in the below image
+Check the vpa object: 
+$oc describe vpa rest-fights-vpa
+
+Look for the recomdenation values captured by the vpa for CPU and Memory as shown in the below image
 
 
 ![](images/vpa-image.png)
