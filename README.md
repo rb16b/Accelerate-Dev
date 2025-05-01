@@ -12,10 +12,10 @@
 
 This is an addition to the Accelerate Application Delivery Workshop.
 Users will have a chance to try: 
-- Vertical Pod AutoScaler for sizing pod baseline resurces requirmennts
-- Horizontal Pod AutoScaler
-- Pod Distributon Budget
-- Network Policy to restrict access
+- Vertical Pod AutoScaler - sizing pod baseline resurces requirmennts
+- Horizontal Pod AutoScaler - autoscalabity
+- Pod Distributon Budget - pod disruption prevention
+- Network Policy - restrict access
 
 NOTE: Vertical Auto Scaler requires VPA operator to be installed, which was done by the cluster admin.
 
