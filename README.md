@@ -100,9 +100,17 @@ A Pod Disruption Budget is a Kubernetes resource that specifies the minimum numb
 Make sure you are dev-UserX project.
 View the pdb.yaml file to see the configuration.
 
-Since pdb has a min value set to 1, the actual pod has to have a higher number of instances.
+Since PDB has a min value set to 1, the actual pod has to have a higher number of instances. 
+If number of pods instances configured in Deployment and PDB are the same, cluster upgrade would not be able to drain a node with pod configured like that.
 
-Before applying PDB configuration we need to set replica count to 2 for rest-figts
+Before applying PDB configuration we need to set replica count to 2 for rest-fighys
+
+Run $  oc scale dc/rest-fights --replicas=2
+
+Run to verify ( or check the console ) $ oc get rc  ( rc stands for replica controller)
+
+NAME            DESIRED   CURRENT   READY   AGE
+rest-fights-1   2         2         2       8m21s
 
 Run $ oc apply -f pdb.yaml
 
@@ -122,7 +130,9 @@ NOTE: oc delete pod and pdb
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
 The only way to test it out would be to use a node drain command, but that requires an admin role.
 
+Set number of rest-fights pods to 1 
 
+Run $  oc scale dc/rest-fights --replicas=1
 
 ## Horizontal Pod Scaler Exercise
 
