@@ -12,7 +12,7 @@
 
 This is an addition to the Accelerate Application Delivery Workshop.
 Users will have a chance to try: 
-    - Vertical Pod AutoScaler for assessing Deployment resource levels
+    - Vertical Pod AutoScaler for sizing pod baseline resurces requirmennts
     - Horizontal Pod AutoScaler 
     - Pod Distributon Budget
     - Network Policy to restrict access
