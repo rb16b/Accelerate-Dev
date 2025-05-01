@@ -97,8 +97,12 @@ Look for the recommendation values captured by the VPA for CPU and Memory as sho
 
 A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrade)
 
-Make sure you are dev-UserX project
-View the pdb.yaml file
+Make sure you are dev-UserX project.
+View the pdb.yaml file to see the configuration.
+
+Since pdb has a min value set to 1, the actual pod has to have a higher number of instances.
+
+Before applying PDB configuration we need to set replica count to 2 for rest-figts
 
 Run $ oc apply -f pdb.yaml
 
