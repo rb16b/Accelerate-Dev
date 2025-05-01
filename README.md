@@ -119,12 +119,17 @@ Before applying PDB configuration, we need to set the replica count to 2 for res
 
 Run $  oc scale dc/rest-fights --replicas=2
 
-Run to verify ( or check the console ) 
+Verify with running oc cmd or check the console  
 
-$ oc get rc  ( rc stands for replica controller)
+1. oc cmd $ oc get rc  ( rc stands for replica controller)
 
 NAME            DESIRED   CURRENT   READY   AGE
 rest-fights-1   2         2         2       8m21s
+
+2. Console
+
+![](images/rest-fights-scale-2.png)
+   
 
 Run $ oc apply -f pdb.yaml
 
