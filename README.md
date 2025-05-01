@@ -86,7 +86,7 @@ Use the script run-load.sh, but first change the URL with a generated URL for th
 
 Open the OCP console on Developer prospective, Toplogy, select project dev-userX
 
-![](images/rest-Fights-URL.png)
+![](images/rest-Figts-URL.png)
 
 Copy the Route URL from the Resurces Tab and apply to run-load script, save the change
 
