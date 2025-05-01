@@ -124,9 +124,10 @@ Verify with running oc cmd or check the console
 1. oc cmd $ oc get rc  ( rc stands for replica controller)
 
 NAME            DESIRED   CURRENT   READY   AGE
+
 rest-fights-1   2         2         2       8m21s
 
-2. Console
+2. OCP Console, 
 
 ![](images/rest-fights-scale-2.png)
    
