@@ -17,18 +17,18 @@ Users will have a chance to try:
     - Pod Distributon Budget
     - Network Policy to restrict access
 
-NOTE: Vertical Auto Scaler requires VPA opertor to be installed, which was done bu the cluster admin.
+NOTE: Vertical Auto Scaler requires VPA operator to be installed, which was done by the cluster admin.
 
-You will be using the openshift project created during the first lab called dev-userX, where X is a number assigned ( example: dev-user3 ) 
+You will be using the openshift project created during the first lab called "dev-userX", where X is a number assigned to you during workshop onboarding ( example: dev-user3 ) 
 
 ## Getting Started with the Vertical Pod AutoScaler exercise
 
 Clone this repo: https://github.com/rb16b/Accelerate-Dev
 
-1. You can clone it onto your laptop; however, there may be proxy issues running oc cmds with the cluster on cloud
-2. Clone it into Dev-Spaces instance provided with the workshop
+1. You can clone it onto your laptop; however, there may be proxy issues running oc cmds with the cluster on the cloud
+2. Clone it into the Dev-Spaces instance provided with the workshop
 
-From the menu select -> Source Control button
+From the menu, select -> Source Control button
 
 ![](images/clone-repor.png)
 
@@ -50,10 +50,12 @@ Repo Added
 
 ![](images/rep-ready.png)
 
-You can use existing terminal or open a new one 
+You can use the existing terminal or open a new one 
 
-Make sure you are logged to the cluster 
-$oc login to the cluster with the user id assigned to you
+Make sure you are logged into the cluster. 
+
+If not, login:
+$oc login to the cluster with the user ID assigned to you
 
 Use dev-userX project for this exercise
 $oc project dev-userX ( dev-user1 for user1 )
@@ -64,8 +66,11 @@ View vpa.yaml file first, then apply it to the rest-figths pod.
 
 $ oc apply -f vpa.yaml 
 
-Next, clik on rest-gightsd pod, on the right of the screen select Resources. you will find the Route url on the botttom, open it in the browser, it should like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
+Next, click on the rest-figts pod, on the right of the screen, select Resources. You will find the Route URL on the bottom, open it in the browser, it should look like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
+
 Make sure to add q/swagger-ui/ at the end. That will open openAPI screen containing APIs info.
+
+NOTE: You can also find the rest-fights swagger URL in your workshop main page.
 
 ![](images/rest-fightsAPI.png)
 
@@ -75,11 +80,11 @@ Run multiple calls to create traffic.
 
 To create more traffic:
 
-Use the script  run-load.sh, but first change the URL with a generated URL for this API
+Use the script run-load.sh, but first change the URL with a generated URL for this API
 "http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
 
 Run $ ./run-load.sh 
-Use cntrl-c to stop it
+Use Ctrl-C to stop it
 
 After the script is done :
 
@@ -95,15 +100,15 @@ Look for the recommendation values captured by the VPA for CPU and Memory as sho
 
 ## Pod Budget Distribution Exercise
 
-A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrade)
+A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrades)
 
 Make sure you are dev-UserX project.
 View the pdb.yaml file to see the configuration.
 
 Since PDB has a min value set to 1, the actual pod has to have a higher number of instances. 
-If number of pods instances configured in Deployment and PDB are the same, cluster upgrade would not be able to drain a node with pod configured like that.
+If the number of pods instances configured in the Deployment and PDB are the same, the cluster upgrade would not be able to drain a node with a pod configured like that.
 
-Before applying PDB configuration we need to set replica count to 2 for rest-fighys
+Before applying PDB configuration, we need to set the replica count to 2 for rest-fighys
 
 Run $  oc scale dc/rest-fights --replicas=2
 
@@ -114,12 +119,12 @@ rest-fights-1   2         2         2       8m21s
 
 Run $ oc apply -f pdb.yaml
 
-You have set up Pod Distribution Budget for the rest-fights application 
+You have set up the Pod Distribution Budget for the rest-fights application 
 
-Check if pdb is ready
+Check if the PDB is ready
 $ oc get pdb
 
-You should see the bellow output -->
+You should see the below output -->
 
 NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 
@@ -128,9 +133,9 @@ fights-pdb   1                  N/A               0                  12m
 
 NOTE: oc delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
-The only way to test it out would be to use a node drain command, but that requires an admin role.
+The only way to test it out would be to use a node drain command, but it requires an admin role.
 
-Set number of rest-fights pods to 1 
+Set the number of rest-fights pods to 1 
 
 Run $  oc scale dc/rest-fights --replicas=1
 
@@ -140,13 +145,13 @@ The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the numb
 
 Apply HPA to dev-userX (where userX is your workshop userID !!! )project to manage rest-fights pod scalability
 
-Firs,t look at the Developer Console Topology project dev-userX 
+First, look at the Developer Console Topology project dev-userX 
 
 Click on the rest-figts pod and Details 
 
 ![](images/hpa-org.png)
 
-You see the pod count to be 1 and arrows for manual pod scalability.
+You see the pod count as  1 and arrows for manual pod scalability.
 
 HPA definitions for Min pod count is 2, Max pod count 4.
 
@@ -156,9 +161,9 @@ Take a look back at the same console
 
 ![](images/hpa-1-2.png)
 
-You should notice changes happing, pod is scaling up
+You should notice changes happening, the pod is scaling up
 
-Then finally rest-figts is running 2 pods and manual scalability arrows are gone
+Then, finally, rest-figts is running 2 pods and manual scalability arrows are gone
 
 ![](images/hpa-2.png)
 
@@ -188,4 +193,4 @@ Response: block-ingress   app=rest-fights   44m
 
 $ oc delete networkpolicy block-ingress 
 
- You can try opening the app URL from OpenShift console, and the ingress traffic should access the rest-fights app 
+ You can try opening the app URL from the OpenShift console, and the ingress traffic should access the rest-fights app 
