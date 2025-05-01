@@ -119,7 +119,9 @@ Before applying PDB configuration, we need to set the replica count to 2 for res
 
 Run $  oc scale dc/rest-fights --replicas=2
 
-Run to verify ( or check the console ) $ oc get rc  ( rc stands for replica controller)
+Run to verify ( or check the console ) 
+
+$ oc get rc  ( rc stands for replica controller)
 
 NAME            DESIRED   CURRENT   READY   AGE
 rest-fights-1   2         2         2       8m21s
@@ -135,10 +137,10 @@ You should see the below output -->
 
 NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 
-fights-pdb   1                  N/A               0                  12m
+fights-pdb   1                  N/A               0                  
 
 
-NOTE: oc delete pod and pdb 
+NOTE:  delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
 The only way to test it out would be to use a node drain command, but it requires an admin role.
 
