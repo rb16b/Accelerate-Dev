@@ -189,6 +189,13 @@ $oc delete hpa rest-fights-hpa
 
 horizontalpodautoscaler.autoscaling "rest-fights-hpa" deleted
 
+Since HPA increased pod count to 2, scale it down to 1
+
+$  oc scale dc/rest-fights --replicas=1
+
+
+
+
 # Network Policy Exercise
 
 
