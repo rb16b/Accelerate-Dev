@@ -58,7 +58,8 @@ If not, login:
 $oc login to the cluster with the user ID assigned to you
 
 Use dev-userX project for this exercise
-$oc project dev-userX ( dev-user1 for user1 )
+
+$oc project dev-userX ( example: dev-user5 if your assigned id is user5 )
 
 $ cd /home/user/Accelerate-Dev/dev-user-objects
 
