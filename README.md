@@ -182,6 +182,13 @@ Then, finally, rest-figts is running 2 pods and manual scalability arrows are go
 
 ![](images/hpa-2.png)
 
+Delete HPA obect:
+
+$ oc delete hpa 
+
+oc delete hpa rest-fights-hpa
+horizontalpodautoscaler.autoscaling "rest-fights-hpa" deleted
+
 # Network Policy Exercise
 
 
