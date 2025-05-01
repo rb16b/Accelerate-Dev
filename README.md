@@ -64,12 +64,14 @@ View vpa.yaml file first, then apply it to the rest-figths pod.
 
 $ oc apply -f vpa.yaml 
 
-Next, use the rest-fights Route url, open it in the browser like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com/q/swagger-ui/
-Make Sure to add q/swagger-ui/ at the end.
+Next, clik on rest-gightsd pod, on the right of the screen select Resources. you will find the Route url on the botttom, open it in the browser, it should like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
+Make sure to add q/swagger-ui/ at the end. That will open openAPI screen containing APIs info.
 
 ![](images/rest-fightsAPI.png)
 
-Run multiple calls to create a load. 
+Select Hello API
+
+Run multiple calls to create traffic.
 
 To create more traffic:
 
