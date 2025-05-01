@@ -88,7 +88,7 @@ Open the OCP console on Developer prospective, Toplogy, select project dev-userX
 
 ![](images/rest-Figts-URL.png)
 
-Copy the Route URL from the Resurces Tab and apply to run-load script, save the change
+Copy the Route URL from the Resources Tab and apply to run-load.sh script, save the change
 
 Run $ ./run-load.sh 
 Use Ctrl-C to stop it
