@@ -84,7 +84,7 @@ Run oc describe vpa rest-fights-vpa
 
 ![](images/VPA-before-run.png)
 
-Next, click on the rest-figts pod, on the right of the screen, select Resources. You will find the Route URL on the bottom, open it in the browser, it should look like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
+Next, click on the rest-figts pod, on the right of the screen, select Resources. You will find the Route URL on the bottom, open it in the browser, it should look like this (user1 example) - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
 
 Make sure to add q/swagger-ui/ at the end. That will open openAPI screen containing APIs info.
 
