@@ -5,9 +5,9 @@
 - [Intro](#intro)
 - [Getting started](#getting-started)
 - [Vertical Pod Auto Scaler Exercise](#vertical-pod-autoscaler)
-- [Pod Budget Distribution Exercise](#components-and-architecture)
-- [Horizontal Pod Auto Scaler Exercise](#features-and-known-limitations)
-- [Network Policy](#related-links)
+- [Pod Budget Distribution Exercise](#pod-budget-distrubution-exercise)
+- [Horizontal Pod Auto Scaler Exercise](#horizontal-pod-auto-scaler)
+- [Network Policy](#network-policy)
 
 ## Intro
 
@@ -69,6 +69,18 @@ $ cd /home/user/Accelerate-Dev/dev-user-objects
 View vpa.yaml file first, then apply it to the rest-figths pod.
 
 $ oc apply -f vpa.yaml 
+
+Check VPA infomration:
+
+Run $ oc 
+
+VPA displed info:
+
+![](images/VPA-Deploy.png)
+
+After a while VPA will provide recomedndations, however, those are based on idle state
+
+![](images/VPA-before-run.png)
 
 Next, click on the rest-figts pod, on the right of the screen, select Resources. You will find the Route URL on the bottom, open it in the browser, it should look like this - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
 
