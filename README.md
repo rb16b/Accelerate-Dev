@@ -4,6 +4,7 @@
 
 - [Intro](#intro)
 - [Getting started](#getting-started)
+- [Vertical Pod Scaler Exercise](#vpa-ex)
 - [Pod Budget Distribution Exercise](#components-and-architecture)
 - [Horizontal Pod Scaler Exercise](#features-and-known-limitations)
 - [Network Policy](#related-links)
@@ -49,6 +50,8 @@ Press Trust Provider
 Repo Added
 
 ![](images/rep-ready.png)
+
+## vpa-ex
 
 You can use the existing terminal or open a new one 
 
