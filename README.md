@@ -4,9 +4,9 @@
 
 - [Intro](#intro)
 - [Getting started](#getting-started)
-- [Vertical Pod Scaler Exercise](#vpa-ex)
+- [Vertical Pod Auto Scaler Exercise](#vpa-ex)
 - [Pod Budget Distribution Exercise](#components-and-architecture)
-- [Horizontal Pod Scaler Exercise](#features-and-known-limitations)
+- [Horizontal Pod Auto Scaler Exercise](#features-and-known-limitations)
 - [Network Policy](#related-links)
 
 ## Intro
@@ -22,7 +22,7 @@ NOTE: Vertical Auto Scaler requires VPA operator to be installed, which was done
 
 You will be using the openshift project created during the first lab called "dev-userX", where X is a number assigned to you during workshop onboarding ( example: dev-user3 ) 
 
-## Getting Started with the Vertical Pod AutoScaler exercise
+## Getting Started
 
 Clone this repo: https://github.com/rb16b/Accelerate-Dev
 
@@ -51,7 +51,7 @@ Repo Added
 
 ![](images/rep-ready.png)
 
-## vpa-ex
+## Vertical Pod Autoscaler 
 
 You can use the existing terminal or open a new one 
 
