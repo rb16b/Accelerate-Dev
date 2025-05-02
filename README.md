@@ -4,7 +4,7 @@
 
 - [Intro](#intro)
 - [Getting started](#getting-started)
-- [Vertical Pod Auto Scaler Exercise](#vpa-ex)
+- [Vertical Pod Auto Scaler Exercise](#vertical-pod-autoscaler)
 - [Pod Budget Distribution Exercise](#components-and-architecture)
 - [Horizontal Pod Auto Scaler Exercise](#features-and-known-limitations)
 - [Network Policy](#related-links)
