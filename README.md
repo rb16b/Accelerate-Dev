@@ -6,8 +6,8 @@
 - [Getting started](#getting-started)
 - [Vertical Pod Auto Scaler Exercise](#vertical-pod-autoscaler)
 - [Pod Budget Distribution Exercise](#pod-budget-distrubution-exercise)
-- [Horizontal Pod Auto Scaler Exercise](#horizontal-pod-auto-scaler)
-- [Network Policy](#network-policy)
+- [Horizontal Pod Auto Scaler Exercise](#horizontal-pod-auto-scaler-exercise)
+- [Network Policy Exercise](#network-policy-exercise)
 
 ## Intro
 
@@ -74,11 +74,11 @@ Check VPA infomration:
 
 Run $ oc 
 
-VPA displed info:
+VPA doesn't have recomendations at this point
 
 ![](images/VPA-Deploy.png)
 
-After a while VPA will provide recomedndations, however, those are based on idle state
+After a while VPA will provide recomendations, however, those are based on idle state
 
 ![](images/VPA-before-run.png)
 
@@ -110,7 +110,7 @@ Use Ctrl-C to stop it
 
 After the script is done :
 
-Check the VPA object: 
+Check the VPA object and check recomnedations.
 $oc describe vpa rest-fights-vpa
 
 Look for the recommendation values captured by the VPA for CPU and Memory as shown in the image below
@@ -161,7 +161,7 @@ NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 fights-pdb   1                  N/A               0                  
 
 
-NOTE:  delete pod and pdb 
+NOTE:  Delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
 The only way to test it out would be to use a node drain command, but it requires an admin role.
 
@@ -172,6 +172,9 @@ Run $  oc scale dc/rest-fights --replicas=1
 ## Horizontal Pod Scaler Exercise
 
 The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
+
+NOTE: In order to test HPA scalabilty in action, a load tool ( like JMeter, K6 ) has to be used to generate enough load to trigger scalabity.
+This exercise will only show HPA impact on a pod's replica number.
 
 Apply HPA to dev-userX (where userX is your workshop userID !!! )project to manage rest-fights pod scalability
 
