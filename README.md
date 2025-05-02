@@ -5,8 +5,8 @@
 - [Intro](#intro)
 - [Getting started](#getting-started)
 - [Vertical Pod Auto Scaler Exercise](#vertical-pod-autoscaler)
-- [Pod Budget Distribution Exercise](#pod-budget-distrubution-exercise)
-- [Horizontal Pod Auto Scaler Exercise](#horizontal-pod-auto-scaler-exercise)
+- [Pod Budget Distribution Exercise](#pod-budget-distribution-exercise)
+- [Horizontal Pod Auto Scaler Exercise](#horizontal-pod-autoscaler-exercise)
 - [Network Policy Exercise](#network-policy-exercise)
 
 ## Intro
@@ -51,7 +51,7 @@ Repo Added
 
 ![](images/rep-ready.png)
 
-## Vertical Pod Autoscaler 
+## Vertical Pod Autoscaler Exercise
 
 You can use the existing terminal or open a new one 
 
@@ -169,7 +169,7 @@ Set the number of rest-fights pods to 1
 
 Run $  oc scale dc/rest-fights --replicas=1
 
-## Horizontal Pod Scaler Exercise
+## Horizontal Pod AutoScaler Exercise
 
 The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
 
