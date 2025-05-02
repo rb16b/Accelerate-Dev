@@ -13,12 +13,12 @@
 
 This is an addition to the Accelerate Application Delivery Workshop.
 Users will have a chance to try: 
-- Vertical Pod AutoScaler - sizing pod baseline resurces requirmennts
+- Vertical Pod AutoScaler - sizing pod baseline resources requirements
 - Horizontal Pod AutoScaler - autoscalabity
-- Pod Distributon Budget - pod disruption prevention
+- Pod Distribution Budget - pod disruption prevention
 - Network Policy - restrict access
 
-NOTE: Vertical Auto Scaler requires VPA operator to be installed, which was done by the cluster admin.
+NOTE: Vertical Auto Scaler requires VPA operator to be installed.
 
 You will be using the openshift project created during the first lab called "dev-userX", where X is a number assigned to you during workshop onboarding ( example: dev-user3 ) 
 
@@ -66,19 +66,21 @@ $oc project dev-userX ( example: dev-user5 if your assigned id is user5 )
 
 $ cd /home/user/Accelerate-Dev/dev-user-objects
 
-View vpa.yaml file first, then apply it to the rest-figths pod.
+View the vpa.yaml file first, then apply it to the rest-figths pod in your project ( dev-userX)
 
 $ oc apply -f vpa.yaml 
 
 Check VPA infomration:
 
-Run $ oc 
+Run $ oc describe vpa rest-fights-vpa
 
-VPA doesn't have recomendations at this point
+VPA doesn't have recommendations at this point
 
 ![](images/VPA-Deploy.png)
 
-After a while VPA will provide recomendations, however, those are based on idle state
+After a while, VPA will provide recommendations, however, those are based on the idle state
+
+Run oc describe vpa rest-fights-vpa
 
 ![](images/VPA-before-run.png)
 
@@ -86,7 +88,7 @@ Next, click on the rest-figts pod, on the right of the screen, select Resources.
 
 Make sure to add q/swagger-ui/ at the end. That will open openAPI screen containing APIs info.
 
-NOTE: You can also find the rest-fights swagger URL in your workshop main page.
+NOTE: You can also find the rest-fights swagger API URL on your workshop main page.
 
 ![](images/rest-fightsAPI.png)
 
@@ -99,7 +101,7 @@ To create more traffic:
 Use the script run-load.sh, but first change the URL with a generated URL for this API
 "http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
 
-Open the OCP console on Developer prospective, Toplogy, select project dev-userX
+Open the OCP console on Developer perspective, Topology, select project dev-userX
 
 ![](images/rest-Figts-URL.png)
 
@@ -110,13 +112,16 @@ Use Ctrl-C to stop it
 
 After the script is done :
 
-Check the VPA object and check recomnedations.
+Check the VPA object and check recommendations.
 $oc describe vpa rest-fights-vpa
 
 Look for the recommendation values captured by the VPA for CPU and Memory as shown in the image below
 
 
 ![](images/vpa-image.png)
+
+More on the resource estimations : https://github.com/wserafin/resource-estimation
+
 
 
 
@@ -161,9 +166,9 @@ NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
 fights-pdb   1                  N/A               0                  
 
 
-NOTE:  Delete pod and pdb 
+NOTE:  On delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
-The only way to test it out would be to use a node drain command, but it requires an admin role.
+The only way to test it out is to use a node drain command, which requires an admin role.
 
 Set the number of rest-fights pods to 1 
 
@@ -173,7 +178,7 @@ Run $  oc scale dc/rest-fights --replicas=1
 
 The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pods in a deployment, replication controller, or replica set based on observed metrics, such as CPU utilization or custom metrics.
 
-NOTE: In order to test HPA scalabilty in action, a load tool ( like JMeter, K6 ) has to be used to generate enough load to trigger scalabity.
+NOTE: In order to test HPA scalability in action, a load tool ( like JMeter or K6) must generate enough load to trigger scalability.
 This exercise will only show HPA impact on a pod's replica number.
 
 Apply HPA to dev-userX (where userX is your workshop userID !!! )project to manage rest-fights pod scalability
@@ -200,7 +205,7 @@ Then, finally, rest-figts is running 2 pods and manual scalability arrows are go
 
 ![](images/hpa-2.png)
 
-Delete HPA obect:
+Delete HPA object:
 
 
 $oc delete hpa rest-fights-hpa
@@ -230,11 +235,11 @@ Ensure that you update the url to reflect your environment.
  
 ![](images/netpolicy-error.png)
 
-You should see an error : 503 , Service Unavailable 
+You should see an error: 503, Service Unavailable 
 
 Delete netowrk policy:
 
-$ oc get networkpolcy
+$ oc get networkpolicy
 
 Response: block-ingress   app=rest-fights   44m
 
