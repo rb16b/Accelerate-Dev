@@ -20,100 +20,119 @@ Users will have a chance to try:
 
 NOTE: Vertical Auto Scaler requires VPA operator to be installed.
 
-You will be using the openshift project created during the first lab called "dev-userX", where X is a number assigned to you during workshop onboarding ( example: dev-user3 ) 
+You will be using the openshift project created during the first lab called `dev-userX`, where X is a number assigned to you during workshop onboarding ( example: `dev-user3` ) 
 
 ## Getting Started
 
-Clone this repo: https://github.com/rb16b/Accelerate-Dev
+1. Clone this repo: https://github.com/rb16b/Accelerate-Dev
 
-1. You can clone it onto your laptop; however, there may be proxy issues running oc cmds with the cluster on the cloud
-2. Clone it into the Dev-Spaces instance provided with the workshop
+*  You can clone it onto your laptop; however, there may be proxy issues running oc cmds with the cluster on the cloud
+* Clone it into the Dev-Spaces instance provided with the workshop
 
-From the menu, select -> Source Control button
+
+2. From the left menu, select the  `Source Control` extension
 
 ![](images/clone-repor.png)
 
-Enter Repo url:
+3. Enter Repo url:
 
 ![](images/repo-url-enter.png)
 
-Enter project home: /home/user/
+4. Enter project home: `/home/user/`
 
 ![](images/project-home-for-extra.png)
 
-Press the OK button
+5. Press the `OK` button
 
-Press Add to the workspace
+6. Press `Add to the workspace`
 
-Press Trust Provider
-
-Repo Added
+7. Press `Trust Provider`, Repo is added
 
 ![](images/rep-ready.png)
 
 ## Vertical Pod Autoscaler Exercise
 
-You can use the existing terminal or open a new one 
+1. You can use the existing terminal or open a new one 
 
-Make sure you are logged into the cluster. 
+2. Make sure you are logged into the cluster. 
 
-If not, login:
-$oc login to the cluster with the user ID assigned to you
+If not, login to the cluster with the user ID assigned to you:
+```bash
+oc login <URL>
+```
 
-Use dev-userX project for this exercise
+3. Use `dev-userX` project for this exercise
+ ( example: `dev-user5` if your assigned id is user5 )
 
-$oc project dev-userX ( example: dev-user5 if your assigned id is user5 )
+```bash
+oc project dev-userX
+```
 
-$ cd /home/user/Accelerate-Dev/dev-user-objects
+4. Navigate to the `dev-user-objects` directory
+```bash
+ cd /home/user/Accelerate-Dev/dev-user-objects
+ ```
 
-View the vpa.yaml file first, then apply it to the rest-figths pod in your project ( dev-userX)
+5. Open the vpa.yaml file first, then apply it to the rest-fights pod in your project (`dev-userX`)
 
-$ oc apply -f vpa.yaml 
+```bash
+oc apply -f vpa.yaml 
+```
 
-Check VPA infomration:
+5. Check the VPA information:
 
-Run $ oc describe vpa rest-fights-vpa
+```bash 
+oc describe vpa rest-fights-vpa
+```
 
-VPA doesn't have recommendations at this point
+The VPA doesn't have recommendations at this point
 
 ![](images/VPA-Deploy.png)
 
 After a while, VPA will provide recommendations, however, those are based on the idle state
 
-Run oc describe vpa rest-fights-vpa
+6. Run the command again
+
+```bash 
+oc describe vpa rest-fights-vpa
+```
 
 ![](images/VPA-before-run.png)
 
-Next, click on the rest-figts pod, on the right of the screen, select Resources. You will find the Route URL on the bottom, open it in the browser, it should look like this (user1 example) - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
-
-Make sure to add q/swagger-ui/ at the end. That will open openAPI screen containing APIs info.
-
-NOTE: You can also find the rest-fights swagger API URL on your workshop main page.
-
-![](images/rest-fightsAPI.png)
-
-Select Hello API
-
-Run multiple calls to create traffic.
-
-To create more traffic:
-
-Use the script run-load.sh, but first change the URL with a generated URL for this API
-"http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
-
-Open the OCP console on Developer perspective, Topology, select project dev-userX
+7. Next, from the OpenShift Console, click on the `rest-fights pod`, on the right of the screen, select `Resources`. You will find the `Route` URL on the bottom, open it in the browser, it should look like this (user1 example) - http://rest-fights-dev-user1.apps.cluster-lzxlf.lzxlf.sandbox1417.opentlc.com
 
 ![](images/rest-Figts-URL.png)
 
-Copy the Route URL from the Resources Tab and apply to run-load.sh script, save the change
+Make sure to add `q/swagger-ui/` at the end. That will open openAPI screen containing APIs info.
 
-Run $ ./run-load.sh 
-Use Ctrl-C to stop it
+NOTE: You can also find the `rest-fights` swagger API URL on your workshop main page.
 
-After the script is done :
+![](images/rest-fightsAPI.png)
+
+8. Select Hello API
+
+9. Run multiple calls to create traffic.
+
+10. To create more traffic:
+
+Use the script `run-load.sh`, but first change the URL with a generated URL for this API
+"http://RELPLACEME/api/fights/hello" - replace RELPLACEME with an actual API URL
+
+11. Reminder: To get the route, open the OCP console on Developer perspective, `Topology`, select project `dev-userX`
+
+12. Copy the Route URL from the Resources Tab and apply to run-load.sh script, save the change
+
+```bash
+./run-load.sh 
+```
+Note: Use Ctrl-C to stop it
+
+13. Once the script is done :
 
 Check the VPA object and check recommendations.
-$oc describe vpa rest-fights-vpa
+```bash
+oc describe vpa rest-fights-vpa
+```
 
 Look for the recommendation values captured by the VPA for CPU and Memory as shown in the image below
 
@@ -129,50 +148,65 @@ More on the resource estimations : https://github.com/wserafin/resource-estimati
 
 A Pod Disruption Budget is a Kubernetes resource that specifies the minimum number of pods that must remain available during a disruption caused by voluntary actions (like scaling down) or involuntary actions (like node failures or cluster upgrades)
 
-Make sure you are dev-UserX project.
+Make sure you are `dev-UserX` project.
 View the pdb.yaml file to see the configuration.
 
 Since PDB has a min value set to 1, the actual pod has to have a higher number of instances. 
 If the number of pods instances configured in the Deployment and PDB are the same, the cluster upgrade would not be able to drain a node with a pod configured like that.
 
-Before applying PDB configuration, we need to set the replica count to 2 for rest-fighys
+1. Before applying PDB configuration, we need to set the replica count to 2 for rest-fights
 
-Run $  oc scale dc/rest-fights --replicas=2
+```bash
+oc scale dc/rest-fights --replicas=2
+```
 
-Verify with running oc cmd or check the console  
+2. Verify with running oc cmd or check the console ( rc stands for replica controller)
 
-1. oc cmd $ oc get rc  ( rc stands for replica controller)
+```bash
+oc get rc
+```
 
+```
 NAME            DESIRED   CURRENT   READY   AGE
-
 rest-fights-1   2         2         2       8m21s
+```
 
-2. OCP Console, 
+3. Validate in the OCP Console
 
 ![](images/rest-fights-scale-2.png)
    
 
-Run $ oc apply -f pdb.yaml
+4. Apply the pdb configuration
+
+```bash
+oc apply -f pdb.yaml
+```
 
 You have set up the Pod Distribution Budget for the rest-fights application 
 
-Check if the PDB is ready
-$ oc get pdb
+5. Check if the PDB is ready
 
-You should see the below output -->
+```bash
+oc get pdb
+```
 
+You should see the output below
+
+```bash
 NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
-
 fights-pdb   1                  N/A               0                  
+```
 
 
 NOTE:  On delete pod and pdb 
 PDB does not consider explicitly deleting a deployment as a voluntary disruption. !!!
 The only way to test it out is to use a node drain command, which requires an admin role.
 
-Set the number of rest-fights pods to 1 
+6. Set the number of rest-fights pods to 1 
 
-Run $  oc scale dc/rest-fights --replicas=1
+```bash
+oc scale dc/rest-fights --replicas=1
+```
 
 ## Horizontal Pod AutoScaler Exercise
 
@@ -181,68 +215,79 @@ The Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the numb
 NOTE: In order to test HPA scalability in action, a load tool ( like JMeter or K6) must generate enough load to trigger scalability.
 This exercise will only show HPA impact on a pod's replica number.
 
-Apply HPA to dev-userX (where userX is your workshop userID !!! )project to manage rest-fights pod scalability
+Let's Apply the HPA to the `dev-userX` (where userX is your workshop userID !!! ) project to manage rest-fights pod scalability
 
-First, look at the Developer Console Topology project dev-userX 
+1. First, look at the `Developer Console` >  `Topology` > project `dev-userX` 
 
-Click on the rest-figts pod and Details 
+2. Click on the `rest-fights` pod, then `Details` 
 
 ![](images/hpa-org.png)
 
 You see the pod count as  1 and arrows for manual pod scalability.
 
-HPA definitions for Min pod count is 2, Max pod count 4.
+3. Apply the HPA configuration. 
+The current HPA definitions in the configuration file `hpa.yaml` are mininmum pod count 2, maximum pod count 4.
 
-Run $ oc apply -f hpa.yaml 
+```bash
+oc apply -f hpa.yaml 
+```
 
-Take a look back at the same console
+4. Take a look back at the same console
 
 ![](images/hpa-1-2.png)
 
 You should notice changes happening, the pod is scaling up
 
-Then, finally, rest-figts is running 2 pods and manual scalability arrows are gone
+`rest-fights` is running 2 pods and manual scalability arrows are gone
 
 ![](images/hpa-2.png)
 
-Delete HPA object:
+5. Delete HPA object
 
-
-$oc delete hpa rest-fights-hpa
+```bash
+oc delete hpa rest-fights-hpa
 
 horizontalpodautoscaler.autoscaling "rest-fights-hpa" deleted
+```
 
-Since HPA increased pod count to 2, scale it down to 1
+6. Since the HPA increased pod count to 2, scale it down to 1
 
-$  oc scale dc/rest-fights --replicas=1
-
-
-
+```bash
+oc scale dc/rest-fights --replicas=1
+```
 
 # Network Policy Exercise
 
 
 In OpenShift, Network Policies are used to control ingress (incoming) and egress (outgoing) traffic to and from pods. You can create Network Policies to define rules that specify which pods, namespaces, or IP blocks are allowed to connect to your application's pods
 
-View ingress-policy.yaml
+1. View ingress-policy.yaml
 
-Apply Ingress Policy to rest-figts Pod.
+2. Apply the Ingress Policy to `rest-fights` Pod.
  
-Run $ oc apply -f ingress-policy.yaml
+```bash
+oc apply -f ingress-policy.yaml
+```
 
-Run API call from http://YOUR_URL/q/swagger-ui/ and check the return values
+3. Execute an API call from `http://YOUR_URL/q/swagger-ui/` and check the return values
 Ensure that you update the url to reflect your environment.
  
 ![](images/netpolicy-error.png)
 
 You should see an error: 503, Service Unavailable 
 
-Delete netowrk policy:
+4. Delete network policy:
 
-$ oc get networkpolicy
+```bash
+oc get networkpolicy
 
 Response: block-ingress   app=rest-fights   44m
+```
 
-$ oc delete networkpolicy block-ingress 
 
- You can try opening the app URL from the OpenShift console, and the ingress traffic should access the rest-fights app 
+```bash
+oc delete networkpolicy block-ingress 
+```
+
+5. Try opening the app URL from the OpenShift console, and the ingress traffic should access the rest-fights app.
+You can also execute an API call from `http://YOUR_URL/q/swagger-ui/` and check the return values.
